@@ -4,7 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:simple_todo/models/todo.dart';
 
 class TodoRepository extends ChangeNotifier {
-  List<Todo> _todos = [Todo(id: 'kek', title: 'App', description: "Doing")];
+  List<Todo> _todos = [
+    Todo(id: 'kek', title: 'App', description: "Doing"),
+    Todo(id: 'gh', title: 'Nikita', description: "Slonik"),
+    Todo(id: 'ff', title: 'Jlldd', description: "Hhkdd"),
+  ];
 
   List<Todo> getTodoList() {
     return _todos;
@@ -37,11 +41,7 @@ class TodoRepository extends ChangeNotifier {
   }
 
   void deleteTodo(String todoId) {
-    _todos.forEach((todo) {
-      if (todo.id == todoId) {
-        _todos.remove(todo);
-      }
-    });
+    _todos.removeWhere((todo) => todo.id==todoId);
     notifyListeners();
   }
 
